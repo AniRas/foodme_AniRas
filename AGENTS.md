@@ -1,17 +1,17 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Instructions for any AI coding agent (Claude Code, Codex, Cursor, Copilot and others) working in this repository.
 
 ## What this is
 
 FoodMe is a food-ordering demo app used for a QA / agentic-QA course. It is a monorepo with three apps plus a monitoring stack:
 
-- `apps/backend` — Spring Boot REST API, which also serves both SPAs in production. Details: `.claude/rules/backend.md`
-- `apps/web` — customer storefront (React 19 + TypeScript). Details: `.claude/rules/web.md`
-- `apps/admin` — back office (react-admin, plain JS). Details: `.claude/rules/admin.md`
+- `apps/backend` — Spring Boot REST API, which also serves both SPAs in production. Details: `.agents/rules/backend.md`
+- `apps/web` — customer storefront (React 19 + TypeScript). Details: `.agents/rules/web.md`
+- `apps/admin` — back office (react-admin, plain JS). Details: `.agents/rules/admin.md`
 - `infra/monitoring` — Prometheus + Loki + Grafana + Grafana MCP bundled into one Render service (see its README)
 
-The rule files load automatically when you work on files in the matching app. Each app has its own `package.json` / Gradle wrapper. There is no root workspace, so run commands from inside the app directory.
+Before working on an app, read its rule file in `.agents/rules/`.
 
 ## How the pieces fit
 

@@ -48,7 +48,7 @@ Run from `apps/backend`:
 
 - Tests are `@SpringBootTest` + MockMvc classes with `@ActiveProfiles("test")`.
 - They skip Flyway and use H2 in PostgreSQL mode with `create-drop`, seeded from `src/test/resources/data.sql`. Keep that file in sync with any schema or seed changes.
-- When writing tests, use the `backend-tests` skill (`.claude/skills/backend-tests/SKILL.md`).
+- When writing tests, use the `backend-tests` skill (`.agents/skills/backend-tests/SKILL.md`).
 
 ## Intentional demo behaviors (not bugs)
 
