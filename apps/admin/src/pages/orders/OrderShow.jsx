@@ -19,6 +19,7 @@ import {
     DialogActions,
     TextField,
     Stack,
+    Rating,
 } from '@mui/material';
 import { OrderStatus, OrderStatusColors, OrderStatusTransitions } from '../../constants/OrderStatus.jsx';
 import { updateOrderStatus } from '../../api/order-api.js';
@@ -164,6 +165,8 @@ const OrderDetails = () => {
                     <Typography variant="h6">{record.totalPrice} AMD</Typography>
                 </Stack>
 
+                <CustomerReview record={record} />
+
                 {availableTransitions.length > 0 && (
                     <>
                         <Divider sx={{ my: 2 }} />
@@ -209,6 +212,38 @@ const OrderDetails = () => {
                 </DialogActions>
             </Dialog>
         </Box>
+    );
+};
+
+// KAN-5: hidden until the order is delivered; "No review yet" until the customer rates it.
+const CustomerReview = ({ record }) => {
+    if (record.status !== OrderStatus.DELIVERED) return null;
+    const review = record.review;
+
+    return (
+        <>
+            <Divider sx={{ my: 2 }} />
+            <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
+                Customer review
+            </Typography>
+            {review ? (
+                <Box>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <Rating value={review.rating} readOnly aria-label={`Rated ${review.rating} out of 5`} />
+                        <Typography variant="body2" color="text.secondary">
+                            {review.rating}/5 · {new Date(review.createdAt).toLocaleString()}
+                        </Typography>
+                    </Stack>
+                    {review.comment && (
+                        <Typography sx={{ mt: 1, whiteSpace: 'pre-line', wordBreak: 'break-word' }}>
+                            {review.comment}
+                        </Typography>
+                    )}
+                </Box>
+            ) : (
+                <Typography color="text.secondary">No review yet</Typography>
+            )}
+        </>
     );
 };
 
