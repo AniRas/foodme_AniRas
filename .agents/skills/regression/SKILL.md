@@ -1,4 +1,4 @@
----
+--
 name: regression
 description: Run the FoodMe acceptance regression (test-cases/TC-01 … TC-15) against production in Chrome and write a pass/fail report. Use when asked to run regression, run the test cases, smoke-test or re-check production, or verify that a fix didn't break existing flows.
 ---
