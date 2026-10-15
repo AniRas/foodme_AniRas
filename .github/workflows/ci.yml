@@ -161,7 +161,8 @@ jobs:
       - name: Build backend image
         uses: docker/build-push-action@v6
         with:
-          context: apps/backend
+          context: .
+          file: apps/backend/Dockerfile
           push: false
           tags: foodme-backend:ci
 
